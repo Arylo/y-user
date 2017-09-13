@@ -1,1 +1,7 @@
-# y-user
+# Y-User
+
+## Install
+
+```
+npm install -S y-user
+```

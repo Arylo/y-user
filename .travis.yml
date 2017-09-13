@@ -1,0 +1,16 @@
+language: node_js
+
+node_js:
+  - "node"
+  - "lts/*"
+  - "8"
+  - "6"
+
+services:
+  - mongodb
+
+install:
+  - "npm install"
+
+script:
+  - "npm test"

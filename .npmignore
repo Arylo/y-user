@@ -1,0 +1,10 @@
+*
+.*
+
+!index.js
+!index.d.ts
+!/lib
+!/dist
+!package.json
+!README.md
+!LICENSE

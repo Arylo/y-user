@@ -1,0 +1,48 @@
+{
+  "name": "y-user",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "test": "npm run build && npm run test-cov",
+    "test-spec": "mocha",
+    "test-cov": "istanbul cover _mocha --",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arylo/y-user.git"
+  },
+  "keywords": [
+    "y-system",
+    "arylo",
+    "typescript"
+  ],
+  "types": "index.d.ts",
+  "author": "AryloYeung <arylo.open@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arylo/y-user/issues"
+  },
+  "homepage": "https://github.com/Arylo/y-user#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.74",
+    "@types/md5": "^2.1.32",
+    "@types/mocha": "^2.2.42",
+    "@types/mongoose": "^4.7.21",
+    "@types/should": "^11.2.0",
+    "eslint": "^4.6.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.0",
+    "should": "^12.0.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "md5": "^2.2.1",
+    "mongoose": "^4.11.9"
+  }
+}
