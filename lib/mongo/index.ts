@@ -90,29 +90,15 @@ namespace UserStatics {
 export class UserFactory extends DefaultSchema {
 
     public static encryptFn = (value: string) => {
-        let salt: string;
-        try {
-            const config = require("y-config");
-            salt = config["y-system"].user.salt;
-        } catch (e) {
-            salt = "";
-        }
         const getHashCode = (val = value) => {
-            return md5(`${salt}${val}`);
+            return md5(val);
         };
         return getHashCode(getHashCode());
     }
 
     public static compareFn = (inputVal: string, dbVal: string) => {
-        let salt: string;
-        try {
-            const config = require("y-config");
-            salt = config["y-system"].user.salt;
-        } catch (e) {
-            salt = "";
-        }
         const getHashCode = (val = inputVal) => {
-            return md5(`${salt}${val}`);
+            return md5(val);
         };
         return getHashCode(getHashCode()) === dbVal;
     }
@@ -124,20 +110,7 @@ export class UserFactory extends DefaultSchema {
     }
 
     public createModel(name: string): Model<UserDoc> {
-        let statics: object | void ;
-        try {
-            const config = require("y-config");
-            statics = config["y-system"].user.statics;
-        } catch (e) {
-            statics = void 0;
-        }
-        const hasConfig = !!statics;
         for (const name of Object.keys(UserStatics)) {
-            if (hasConfig) {
-                if (lodash.isBoolean(statics[name]) && !statics[name]) {
-                    continue;
-                }
-            }
             this.addStatic(name, UserStatics[name]);
         }
         return super.createModel(name) as Model<UserDoc>;

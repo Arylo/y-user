@@ -20,7 +20,7 @@ describe('User Model', () => {
     });
 
     before(() => {
-        const userFactory = require('../');
+        const userFactory = require('../').mode('mongo');
         const collectionName = `user${md5(Date.now())}`;
         const factory = new userFactory(void 0, { collection: collectionName });
         UserModel = factory.createModel(collectionName);

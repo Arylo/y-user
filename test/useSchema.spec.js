@@ -1,4 +1,4 @@
-const UserFactory = require('../');
+const UserFactory = require('../').mode('mongo');
 
 describe('User Schema', () => {
 
