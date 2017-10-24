@@ -1,12 +1,11 @@
 import { Schema, Model } from "mongoose";
 type ObjectId = Schema.Types.ObjectId;
 import lodash = require("lodash");
-import md5 = require("md5");
 
-import {
-    IDefault, IDefaultRaw,
-    DefaultSchema, DefinitionType, OptionsType
-} from "./default";
+import { EncryptNS } from "../common/namespaces";
+
+import { DefaultSchema, DefinitionType, OptionsType } from "./default";
+import { UserModel } from "./index.d";
 
 const definition: DefinitionType = {
     username: {
@@ -25,55 +24,52 @@ const definition: DefinitionType = {
     }
 };
 
-export interface IUserRaw extends IDefaultRaw {
-    username: string;
-    password: string;
-    active: boolean;
-}
-
-export interface IUser<T extends IUserRaw> extends IDefault<T> { }
-
-type UserDoc = IUser<IUserRaw>;
-type UserModel = Model<UserDoc>;
-
 const options: OptionsType = {
     collection: "user"
 };
 
 namespace UserStatics {
     export function createUser(name: string, pass: string) {
-        return this.create({
+        const that = this as UserModel;
+        return that.create({
             username: name,
             password: UserFactory.encryptFn(pass)
         });
     }
     export function deleteUser(id: ObjectId) {
-        return this.findOneAndRemove(id).exec();
+        const that = this as UserModel;
+        return that.findOneAndRemove(id).exec();
     }
     export function modifyPass(id: ObjectId, newPass: string) {
-        return this.findByIdAndUpdate(id, {
+        const that = this as UserModel;
+        return that.findByIdAndUpdate(id, {
             password: UserFactory.encryptFn(newPass)
         }).select("-password").exec();
     }
     export function activeUser(id: ObjectId) {
-        return this.findByIdAndUpdate(id, {
+        const that = this as UserModel;
+        return that.findByIdAndUpdate(id, {
             active: true
         }).select("-password").exec();
     }
     export function inactiveUser(id: ObjectId) {
-        return this.findByIdAndUpdate(id, {
+        const that = this as UserModel;
+        return that.findByIdAndUpdate(id, {
             active: false
         }).select("-password").exec();
     }
     export function findUserById(id: ObjectId) {
-        return this.findById(id).select("-password").exec();
+        const that = this as UserModel;
+        return that.findById(id).select("-password").exec();
     }
     export function findUserByName(name: string) {
-        return this.findOne({ username: name }).select("-password").exec();
+        const that = this as UserModel;
+        return that.findOne({ username: name }).select("-password").exec();
     }
     export function checkUser(name: string, pass: string) {
-        return this.findOne({ username: name }).exec().then((obj) => {
-            if (!obj) { return; }
+        const that = this as UserModel;
+        return that.findOne({ username: name }).exec().then((obj) => {
+            if (!obj) { return obj; }
             const user = obj.toObject();
             if (UserFactory.compareFn(pass, user.password)) {
                 return obj;
@@ -83,25 +79,12 @@ namespace UserStatics {
         });
     }
     export function listUsers() {
-        return this.find().select("-password").exec();
+        const that = this as UserModel;
+        return that.find().select("-password").exec();
     }
 }
 
 export class UserFactory extends DefaultSchema {
-
-    public static encryptFn = (value: string) => {
-        const getHashCode = (val = value) => {
-            return md5(val);
-        };
-        return getHashCode(getHashCode());
-    }
-
-    public static compareFn = (inputVal: string, dbVal: string) => {
-        const getHashCode = (val = inputVal) => {
-            return md5(val);
-        };
-        return getHashCode(getHashCode()) === dbVal;
-    }
 
     constructor(defs?: DefinitionType, opts?: OptionsType) {
         super(definition, options);
@@ -109,10 +92,15 @@ export class UserFactory extends DefaultSchema {
         this.setOptions(opts);
     }
 
-    public createModel(name: string): Model<UserDoc> {
+    public createModel(name: string) {
         for (const name of Object.keys(UserStatics)) {
             this.addStatic(name, UserStatics[name]);
         }
-        return super.createModel(name) as Model<UserDoc>;
+        return super.createModel(name) as UserModel;
     }
+}
+
+export namespace UserFactory {
+    export let compareFn = EncryptNS.compareFn;
+    export let encryptFn = EncryptNS.encryptFn;
 }

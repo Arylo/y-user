@@ -9,7 +9,7 @@
     "test": "npm run build && npm run test-cov",
     "test-spec": "mocha",
     "test-cov": "istanbul cover _mocha --",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,13 @@
     "arylo",
     "typescript"
   ],
-  "types": "index.d.ts",
   "files": [
     "tsconfig.json",
     "lib",
     "dist",
     "simples"
   ],
+  "types": "./lib/index.ts",
   "author": "AryloYeung <arylo.open@gmail.com>",
   "license": "MIT",
   "bugs": {

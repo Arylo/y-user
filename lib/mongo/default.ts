@@ -2,15 +2,15 @@ import {
     model, Model, Schema, Document as Doc,
     SchemaDefinition, SchemaOptions
 } from "mongoose";
+
+import {
+    IDefaultRaw
+} from "../common/interfaces";
+
 import lodash = require("lodash");
 
 export type DefinitionType = SchemaDefinition | SchemaDefinition[] | undefined;
 export type OptionsType = SchemaOptions | SchemaOptions[] | undefined;
-
-export interface IDefaultRaw {
-    createdAt: Date;
-    updatedAt: Date;
-}
 
 export interface IDefault<T extends IDefaultRaw> extends Doc {
     toObject(): T;
@@ -73,7 +73,7 @@ export class DefaultSchema {
         return this.defaultSchema;
     }
 
-    public createModel(name: string): Model<IDefault<IDefaultRaw>> {
+    public createModel(name: string) {
         if (!this.defaultSchema) {
             this.defaultSchema = this.createSchema();
         }
@@ -85,6 +85,6 @@ export class DefaultSchema {
             const fn = this.defaultStatics[name];
             this.defaultSchema.static(name, fn);
         });
-        return model(name, this.defaultSchema);
+        return model(name, this.defaultSchema) as Model<IDefault<IDefaultRaw>>;
     }
 }
