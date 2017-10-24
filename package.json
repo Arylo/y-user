@@ -21,6 +21,12 @@
     "typescript"
   ],
   "types": "index.d.ts",
+  "files": [
+    "tsconfig.json",
+    "lib",
+    "dist",
+    "simples"
+  ],
   "author": "AryloYeung <arylo.open@gmail.com>",
   "license": "MIT",
   "bugs": {
