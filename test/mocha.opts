@@ -1,3 +1,4 @@
+--require source-map-support/register
 -r should
 -R spec
 --recursive

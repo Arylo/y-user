@@ -8,7 +8,8 @@
     "strict": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
-    "noImplicitThis": false
+    "noImplicitThis": false,
+    "sourceMap": true
   },
   "exclude": [
     "simples"

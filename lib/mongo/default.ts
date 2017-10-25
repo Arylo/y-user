@@ -3,9 +3,7 @@ import {
     SchemaDefinition, SchemaOptions
 } from "mongoose";
 
-import {
-    IDefaultRaw
-} from "../common/interfaces";
+import { IDefaultRaw } from "../common/interfaces";
 
 import lodash = require("lodash");
 

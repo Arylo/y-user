@@ -9,6 +9,7 @@
       "no-shadowed-variable": false,
       "no-empty-interface": false,
       "no-namespace": [ false ],
+      "no-var-requires": false,
       "object-literal-sort-keys": [ false ],
       "ordered-imports": false,
       "member-ordering": [ false ]
