@@ -1,3 +1,14 @@
+// Check ORM Module exist
+try {
+    require("mongoose");
+} catch (error) {
+    /* istanbul ignore next */
+    throw new TypeError(`
+        I need the \`mongoose\` module, Please install it.
+        You can use the command \`npm install --save mongoose\` to install.
+    `);
+}
+
 import { Schema, Model } from "mongoose";
 type ObjectId = Schema.Types.ObjectId;
 import lodash = require("lodash");
