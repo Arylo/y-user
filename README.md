@@ -3,9 +3,11 @@
 Easily create User Model for mongodb
 
 [![node](https://img.shields.io/node/v/y-user.svg?style=flat-square)](https://www.npmjs.com/package/y-user)
+[![David](https://img.shields.io/david/Arylo/y-user.svg?style=flat-square)][REPO]
 [![Travis](https://img.shields.io/travis/Arylo/y-user.svg?style=flat-square)](https://travis-ci.org/Arylo/y-user)
-[![Author](https://img.shields.io/badge/Auther-AryloYeung-blue.svg?style=flat-square)](https://github.com/arylo)
-[![license](https://img.shields.io/github/license/Arylo/y-user.svg?style=flat-square)](https://github.com/Arylo/y-user)
+[![Coveralls](https://img.shields.io/coveralls/github/Arylo/y-user.svg?style=flat-square)](https://coveralls.io/github/Arylo/y-user)
+[![Author](https://img.shields.io/badge/Author-AryloYeung-blue.svg?style=flat-square)](https://github.com/arylo)
+[![license](https://img.shields.io/github/license/Arylo/y-user.svg?style=flat-square)][REPO]
 
 [![NPM](https://nodei.co/npm/y-user.png)](https://nodei.co/npm/y-user/)
 
@@ -60,3 +62,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
+
+[REPO]: https://github.com/Arylo/y-user
