@@ -1,9 +1,14 @@
-import UserFactory = require("y-user");
+import factory = require("y-user");
+import mongoose = require("mongoose");
 
-const factory = UserFactory.mode("mongo");
+const mongoFactory = factory.mode("mongo");
+const userModelFactory = mongoFactory.getFactory("USER");
+const model = userModelFactory.createModel();
 
-const userFactory = new factory();
+const dbUrl = "mongodb://127.0.0.1/y-user-simple";
+mongoose.connect(dbUrl, { useMongoClient: true });
+mongoose.Promise = global.Promise;
 
-userFactory.createModel("user").listUsers().then((objs) => {
+mongoFactory.model.listUsers().then((objs) => {
     return objs.map((item) => item.toObject());
 });

@@ -1,20 +1,21 @@
+import { isString } from "util";
+
 import * as mongo from "./mongo";
 
-enum DB_MODE {
-    MONGO,
-    mongo
+export enum DB_MODE {
+    MONGO
 }
 
-class UserFactory {
-    public mode(mode: DB_MODE | keyof typeof DB_MODE) {
-        switch (mode) {
-            case "MONGO":
-            case "mongo":
-            case DB_MODE.MONGO:
-            case DB_MODE.mongo:
-            return mongo.UserFactory;
-        }
+export const mode = (modeType: DB_MODE | string) => {
+    if (isString(modeType)) {
+        modeType = modeType.toUpperCase();
+        return mode(DB_MODE[modeType]);
     }
-}
-
-export = new UserFactory();
+    switch (modeType) {
+        case DB_MODE.MONGO:
+            return mongo;
+        /* istanbul ignore next */
+        default:
+            break;
+    }
+};

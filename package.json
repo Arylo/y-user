@@ -34,8 +34,6 @@
   },
   "homepage": "https://github.com/Arylo/y-user#readme",
   "devDependencies": {
-    "@types/lodash": "^4.14.74",
-    "@types/md5": "^2.1.32",
     "@types/mocha": "^2.2.42",
     "@types/mongoose": "^4.7.24",
     "@types/should": "^11.2.0",
@@ -49,10 +47,7 @@
     "tslint": "^5.7.0",
     "typescript": "^2.4.2"
   },
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "md5": "^2.2.1"
-  },
+  "dependencies": {},
   "nyc": {
     "reporter": [
       "lcov"
