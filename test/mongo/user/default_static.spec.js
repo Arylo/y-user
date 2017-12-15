@@ -1,6 +1,6 @@
 const { createHash } = require("crypto");
-const mongoose = require('mongoose');
 
+const connect = require("../connect_mongodb");
 const yuser = require("../../../dist");
 
 describe("Mongo Edition", () => {
@@ -28,9 +28,7 @@ describe("Mongo Edition", () => {
     });
 
     before(() => {
-        const dbUrl = "mongodb://127.0.0.1/y-user-test";
-        mongoose.connect(dbUrl, { useMongoClient: true });
-        mongoose.Promise = global.Promise;
+        connect();
     });
 
     describe("Default Static Function Test Unit", () => {
