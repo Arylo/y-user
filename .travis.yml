@@ -4,7 +4,7 @@ node_js:
   - "node"
   - "lts/*"
   - "8"
-  - "6"
+  # - "6" // it should not support the feature of async/await.
 
 services:
   - mongodb
