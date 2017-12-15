@@ -11,6 +11,7 @@
   "author": "AryloYeung<arylo.open@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "mongoose": "^4.13.7",
     "y-user": "file:../../"
   }
 }

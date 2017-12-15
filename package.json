@@ -1,8 +1,11 @@
 {
   "name": "y-user",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Easily create User Model for mongodb",
   "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "tsc": "tsc",
     "build": "npm run tsc",
@@ -27,7 +30,10 @@
     "simples"
   ],
   "types": "./lib/index.ts",
-  "author": "AryloYeung <arylo.open@gmail.com>",
+  "author": {
+    "name": "AryloYeung",
+    "email": "arylo.open@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Arylo/y-user/issues"
@@ -47,7 +53,6 @@
     "tslint": "^5.7.0",
     "typescript": "^2.4.2"
   },
-  "dependencies": {},
   "nyc": {
     "reporter": [
       "lcov"
