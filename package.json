@@ -1,0 +1,61 @@
+{
+  "name": "y-user",
+  "version": "1.0.0",
+  "description": "Easily create User Model for mongodb",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "test": "cross-env npm run build && npm run test-cov",
+    "test-spec": "mocha",
+    "test-cov": "nyc npm run test-spec",
+    "prepublish": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arylo/y-user.git"
+  },
+  "keywords": [
+    "y-system",
+    "arylo",
+    "typescript"
+  ],
+  "files": [
+    "tsconfig.json",
+    "lib",
+    "dist",
+    "simples"
+  ],
+  "types": "./lib/index.ts",
+  "author": {
+    "name": "AryloYeung",
+    "email": "arylo.open@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arylo/y-user/issues"
+  },
+  "homepage": "https://github.com/Arylo/y-user#readme",
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/mongoose": "^4.7.24",
+    "@types/should": "^11.2.0",
+    "cross-env": "^5.1.0",
+    "eslint": "^4.6.1",
+    "mocha": "^3.5.0",
+    "mongoose": "^4.11.9",
+    "nyc": "^11.2.1",
+    "should": "^12.0.0",
+    "source-map-support": "^0.5.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.4.2"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov"
+    ]
+  }
+}

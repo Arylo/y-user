@@ -1,0 +1,17 @@
+{
+  "name": "mongo-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "keywords": [
+    "y-user",
+    "mongo",
+    "simple"
+  ],
+  "author": "AryloYeung<arylo.open@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.13.7",
+    "y-user": "file:../../"
+  }
+}

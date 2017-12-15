@@ -1,0 +1,6 @@
+--require source-map-support/register
+-r should
+-R spec
+--recursive
+test/**/*.spec.js
+test/**/*.e2e.js
