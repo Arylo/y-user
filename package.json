@@ -12,7 +12,8 @@
     "test": "cross-env npm run build && npm run test-cov",
     "test-spec": "mocha",
     "test-cov": "nyc npm run test-spec",
-    "prepublish": "npm run test"
+    "prepublish": "npm run test",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
