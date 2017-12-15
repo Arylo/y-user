@@ -4,8 +4,9 @@ import { Schema, model, Types, Query, SchemaOptions } from "mongoose";
 import { MongoError } from "mongodb";
 
 import * as common from "./common";
-import { ObjectId } from "./common.d";
+type ObjectId = common.ObjectId;
 import { UserModel, UserDoc, IFactoryOptions } from "./user.d";
+export * from "./user.d";
 
 export const DEFAULT_SALT = common.salt;
 
@@ -25,7 +26,7 @@ export const DEFAULT_SCHEMA_DEFINITION = Object.assign({ }, common.definition, {
     password: {
         type: String,
         required: true,
-        minlength: [6, "Username length must greater 6 words"],
+        minlength: [6, "Password length must greater 6 words"],
         trim: true
     },
     active: {
@@ -294,7 +295,7 @@ const POSTS_FNS = (salt: string) => {
     // }
 
     return {
-        findOneAndUpdate//, update
+        findOneAndUpdate// , update
     };
 };
 
